@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: '#3e2c23',
+            cream: '#f5f5dc',
+            gold: '#fbbf24'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .float {
+      transition: all 0.3s ease;
+    }
+    .float:hover {
+      transform: scale(1.02);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-brown" data-food="chips">
+
+<!-- NAV -->
+<nav class="flex justify-between items-center px-6 py-4 bg-brown text-cream">
+  <h1 class="font-bold">Details</h1>
+  <a href="menu.html" class="bg-gold text-brown px-4 py-2 rounded-xl font-medium">
+    Menu
+  </a>
+</nav>
+
+<!-- MAIN SECTION -->
+<section class="max-w-5xl mx-auto px-6 py-10">
+
+  <!-- IMAGE GRID -->
+  <div class="grid md:grid-cols-2 gap-4">
+
+    <!-- main image -->
+    <img src="images/third/third.jpeg"
+         class="w-full h-80 object-cover rounded-2xl shadow-md float">
+
+    <!-- second image -->
+    <img src="images/third/third1.jpeg"
+         class="w-full h-80 object-cover rounded-2xl shadow-md float">
+
+  </div>
+
+  <!-- INFO -->
+  <div class="mt-8">
+
+    <h1 class="text-3xl font-bold">Freshly Fried Chips & Chicken </h1>
+
+    <p class="text-brown/70 mt-3 leading-relaxed">
+      Freshly cooked and served hot. Made with quality ingredients and prepared daily to ensure taste and satisfaction.
+      Perfect for lunch, dinner, or quick cravings.
+    </p>
+
+    <!-- PRICE -->
+    <p class="mt-4 text-xl font-semibold">
+      ₦2,500
+    </p>
+ 
+   
+    <button id="openModal"
+      class="mt-6 inline-block bg-brown text-cream px-6 py-3 rounded-xl font-semibold float">
+      Order Now
+    </button>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 bg-black/50 hidden justify-center items-end md:items-center z-50">
+
+  <div class="bg-white w-full md:max-w-md rounded-t-2xl md:rounded-2xl max-h-[90vh] overflow-y-auto no-scrollbar p-6">
+
+    <!-- CLOSE -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="font-bold text-lg">Customize Order</h2>
+      <button id="closeModal" class="text-xl">&times;</button>
+    </div>
+
+    <!-- QUANTITY -->
+    <div class="mb-4">
+      <p class="font-medium mb-2">Quantity:</p>
+      <div class="flex justify-between">
+      <div class="flex items-center gap-4">
+        <button id="minus" class="px-3 py-1 bg-gray-200 rounded">-</button>
+        <span id="amount">1</span>
+        <button id="plus" class="px-3 py-1 bg-gray-200 rounded">+</button>
+      </div>
+      <button id="reset" class="px-3 py-1 bg-brown text-white rounded-md">Reset</button>
+      </div>
+    </div>
+
+        <!-- PROTEIN -->
+    <div class="mb-4">
+      <p class="font-medium mb-2">Protein:</p>
+      <div class="flex gap-2 flex-wrap">
+
+        <button data-type="protein" data-value="chicken" data-price="1500"
+          class="addOn px-3 py-1 border rounded">
+          Chicken <span class="text-sm text-gray-500">₦1500</span>
+        </button>
+
+        <button data-type="protein" data-value="fish" data-price="1000"
+          class="addOn px-3 py-1 border rounded">
+          Fish <span class="text-sm text-gray-500">₦1000</span>
+        </button>
+
+        <button data-type="protein" data-value="beef" data-price="500"
+          class="addOn px-3 py-1 border rounded">
+          Beef <span class="text-sm text-gray-500">₦500</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- EXTRAS -->
+    <div class="mb-4">
+      <p class="font-medium mb-2">Extras:</p>
+
+      <div class="flex gap-2 flex-wrap">
+
+        <button class="addOn px-3 py-1 border rounded"
+          data-type="extras"
+          data-value="spice">
+          Spice
+        </button>
+
+        <button class="addOn px-3 py-1 border rounded"
+          data-type="extras"
+          data-value="deep fried">
+          Deep Fried
+        </button>
+
+      </div>
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="mb-4">
+      <p class="font-medium mb-2">Delivery Method:</p>
+
+      <div class="flex gap-3">
+
+        <label>
+          <input type="radio" name="delivery" value="delivery">
+          Delivery
+        </label>
+
+        <label>
+          <input type="radio" name="delivery" value="pickup">
+          Pickup
+        </label>
+
+      </div>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="mb-4 border-t pt-4">
+      <p class="flex justify-between text-lg font-semibold">
+        <span>Total:</span>
+        <span id="total">₦0</span>
+      </p>
+    </div>
+
+    <!-- BUTTON -->
+    <button id="order"
+      class="w-full bg-brown text-cream py-3 rounded-xl font-semibold">
+      Send Order on WhatsApp
+    </button>
+
+  </div>
+</div>
+
+</section>
+
+</body>
+  <script src="script.js"></script>
+</html>
